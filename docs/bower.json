@@ -1,0 +1,20 @@
+{
+  "name": "docs",
+  "homepage": "https://github.com/intelliware-coe-web/lab-angular-redux",
+  "authors": [
+    "JLB <bourgeoisj@intelliware.ca>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "codelab-components": "https://github.com/googlecodelabs/codelab-components.git#^2.0.2"
+  }
+}

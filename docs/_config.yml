@@ -2,15 +2,15 @@ title: Angular Redux Lab
 email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
   This lab is going to show how to use Redux with AngularX.
-#baseurl: "/lab-angular-redux/"
-#url: "https://intelliware-coe-web.github.io"
+baseurl: "/lab-angular-redux/"
+url: "https://intelliware-coe-web.github.io"
 twitter_username: Intelliware_Inc
 
 # Build settings
 markdown: kramdown
 plugins:
   - jekyll-feed
-  
+
 exclude:
    - Gemfile
    - Gemfile.lock

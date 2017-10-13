@@ -2,7 +2,7 @@ title: Angular Redux Lab
 email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
   Learn how to use Redux with AngularX.
-baseurl: "/lab-angular-redux/"
+baseurl: "/lab-angular-redux"
 url: "https://intelliware-coe-web.github.io"
 twitter_username: Intelliware_Inc
 
@@ -10,13 +10,7 @@ twitter_username: Intelliware_Inc
 markdown: kramdown
 plugins:
   - jekyll-feed
-  - jekyll-assets
-
-assets:
-   prefix: "/assets"
-   sources:
-    - assets
-
+ 
 exclude:
    - Gemfile
    - Gemfile.lock

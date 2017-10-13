@@ -2,19 +2,78 @@
     <head>
         <link rel="import" href="{{ site.baseurl}}/assets/bower_components/codelab-components/google-codelab.html">
         <link rel="import" href="{{ site.baseurl}}/assets/bower_components/codelab-components/google-codelab-step.html">
+        <link rel="import" href="{{ site.baseurl}}/assets/bower_components/codelab-components/google-codelab-survey.html">
+
+        <style is="custom-style">
+            :root {
+                --google-codelab-survey-background: #fff7d7;
+                --google-codelab-survey-border: 5px solid #FFE066;
+
+                --google-codelab-header-background: #004785;
+                --google-codelab-background: #4B90CD;
+            }
+        </style>
     </head>
 <body>
-    
+
 <google-codelab title="AngularX with Redux Lab" feedback-link="{{site.url}}{{site.baseurl }}" last-updated="2017-10-13">
+
     <google-codelab-step label="Overview" duration="10">
-        # Intro
+        
+        <h3>Angular X</h3>
+
+        <google-codelab-survey survey-id="exp-angular">
+            <h4>How would rate your experience with Angular X?</h4>
+            <paper-radio-group>
+                <paper-radio-button>None</paper-radio-button>
+                <paper-radio-button>I've used Angular JS only</paper-radio-button>
+                <paper-radio-button>Novice</paper-radio-button>
+                <paper-radio-button>Intermediate</paper-radio-button>
+                <paper-radio-button>Advanced</paper-radio-button>
+            </paper-radio-group>
+        </google-codelab-survey>
+
+        <h3>Redux</h3>
+        <google-codelab-survey survey-id="exp-redux">
+            <h4>How would rate your experience with Redux?</h4>
+            <paper-radio-group>
+                <paper-radio-button>Re-<i>what</i>?</paper-radio-button>
+                <paper-radio-button>I've heard about it</paper-radio-button>
+                <paper-radio-button>I've used it</paper-radio-button>
+                <paper-radio-button>I use it on a regular basis</paper-radio-button>
+                <paper-radio-button>I'm a Jedi</paper-radio-button>
+            </paper-radio-group>
+        </google-codelab-survey>
+
     </google-codelab-step>
-    <google-codelab-step label="Getting Set Up" duration="7">
-        # Git Clone
+
+
+    <google-codelab-step label="Getting Set Up" duration="5">
+        Before you can start, make sure you have <code>git</code> and <code>node</code> installed.
+        Then, 
+            <ul>
+                <li><code>git clone https://github.com/intelliware-coe-web/lab-angular-redux.git</code></li>
+                <li><code>npm install</code></li>
+                <li><code>npm start</code></li>
+                <li>Open <a href="http://localhost:4200">http://localhost:4200</a></li>
+            </ul>
     </google-codelab-step>
+
+
+    <google-codelab-step label="Redux DevTools" duration="5">
+        Install the <strong>redux-devtools</strong> extension for your browser:
+        <ul>
+            <li><a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd">For Chrome</a></li>
+            <li><a href="https://addons.mozilla.org/en-US/firefox/addon/remotedev/">For Firefox</a></li>
+        </ul>
+    </google-codelab-step>
+
+
     <google-codelab-step label="Additional Resources" duration="1">
-        # Links
+        <em>TODO</em>
     </google-codelab-step>
+
+
 </google-codelab>
 
 </body>

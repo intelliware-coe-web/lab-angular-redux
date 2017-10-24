@@ -6,11 +6,38 @@
 
         <style is="custom-style">
             :root {
-                --google-codelab-survey-background: #fff7d7;
-                --google-codelab-survey-border: 5px solid #FFE066;
+                --iwd-dark-blue: rgba(0, 71, 133, 1);
+                --iwd-light-blue: rgba(77, 144, 205, 1);
+                --iwd-grey: rgba(230, 230, 230, 1);
+                --iwd-green: rgba(154, 199, 60, 1);
+                --iwd-yellow: rgba(233, 189, 60, 1);
 
-                --google-codelab-header-background: #004785;
-                --google-codelab-background: #4B90CD;
+                --google-codelab-survey-background: #fff7d7;
+                --google-codelab-survey-border: 5px solid var(--iwd-yellow);
+
+                --google-codelab-header-background: var(--iwd-light-blue);
+                --google-codelab-background: white;
+            }
+
+            /deep/ .google-codelab.iron-selected.toc-item {
+                background: var(--iwd-dark-blue) !important;
+                color: white !important;
+            }
+
+            /deep/ .google-codelab.completed.toc-item i {
+                background: var(--iwd-green) !important;
+                border-color: var(--iwd-green) !important;
+                color: white !important;
+            }
+            /deep/ .google-codelab.iron-selected.toc-item i::after,
+            /deep/ .google-codelab.completed.toc-item i::after { 
+                border-color: var(--iwd-green) !important;
+            }
+
+            /deep/ .google-codelab.iron-selected.toc-item i {
+                background: white !important;
+                color: var(--iwd-light-blue)  !important;
+                border-color: var(--iwd-light-blue) !important;
             }
         </style>
     </head>

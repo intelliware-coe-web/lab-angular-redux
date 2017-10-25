@@ -4,10 +4,14 @@
         <link rel="import" href="{{ site.baseurl}}/assets/bower_components/codelab-components/google-codelab-step.html">
         <link rel="import" href="{{ site.baseurl}}/assets/bower_components/codelab-components/google-codelab-survey.html">
 
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
         <style is="custom-style">
             :root {
-                --iwd-dark-blue: rgba(0, 71, 133, 1);
                 --iwd-light-blue: rgba(77, 144, 205, 1);
+                --iwd-blue: #3870A0; 
+                --iwd-dark-blue: rgba(0, 71, 133, 1);
+                
                 --iwd-grey: rgba(230, 230, 230, 1);
                 --iwd-green: rgba(154, 199, 60, 1);
                 --iwd-yellow: rgba(233, 189, 60, 1);
@@ -15,29 +19,56 @@
                 --google-codelab-survey-background: #fff7d7;
                 --google-codelab-survey-border: 5px solid var(--iwd-yellow);
 
-                --google-codelab-header-background: var(--iwd-light-blue);
-                --google-codelab-background: white;
+                --google-codelab-header-background: var(--iwd-blue);
             }
+            body { font-family: 'Raleway', sans-serif; }
 
+            /**
+             * Instructions
+             */
+            /deep/ #contentContainer { background: #FAFAFA; } /* Container BG */
+            /deep/ .instructions #title { color: var(--iwd-dark-blue); } /*  Step title */
+
+            
+            /deep/ paper-fab.navbutton { background: var(--iwd-light-blue); } /* Prev and next buttons */
+            /deep/ paper-fab.navbutton.donebutton { background: var(--iwd-green) !important; } /* Done button */
+
+
+            /**
+             * Steps
+             */
+            /deep/ .drawer-content-wrapper {
+                background: white !important;
+                border-right: 1px solid var(--iwd-blue);
+            }
+            
+            /* Current step - nav item */
             /deep/ .google-codelab.iron-selected.toc-item {
-                background: var(--iwd-dark-blue) !important;
+                background: var(--iwd-light-blue) !important;
                 color: white !important;
             }
+            /* Current step - step number */
+            /deep/ .google-codelab.iron-selected.toc-item i {
+                background: white !important;
+                color: var(--iwd-dark-blue)  !important;
+                border-color: var(--iwd-dark-blue) !important;
+            }
+            /* Current step - top line */
+            /deep/ .google-codelab.iron-selected.toc-item i::before {
+                border-color: var(--iwd-dark-blue) !important;
+            }
 
+            /* Completed step - step number */
             /deep/ .google-codelab.completed.toc-item i {
                 background: var(--iwd-green) !important;
                 border-color: var(--iwd-green) !important;
                 color: white !important;
             }
-            /deep/ .google-codelab.iron-selected.toc-item i::after,
+
+            /* Completed step - top and bottom lines */
+            /deep/ .google-codelab.completed.toc-item i::before,
             /deep/ .google-codelab.completed.toc-item i::after { 
                 border-color: var(--iwd-green) !important;
-            }
-
-            /deep/ .google-codelab.iron-selected.toc-item i {
-                background: white !important;
-                color: var(--iwd-light-blue)  !important;
-                border-color: var(--iwd-light-blue) !important;
             }
         </style>
     </head>

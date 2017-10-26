@@ -5,12 +5,12 @@ import { PeopleState } from './people.reducer';
 import { People } from './people.model';
 
 @Component({
-  selector: 'people-list',
-  templateUrl: './people-list.component.html'
+  selector: 'people-details',
+  templateUrl: './people-details.component.html'
 })
-export class PeopleComponent implements OnInit, OnDestroy {
+export class PeopleDetailsComponent implements OnInit, OnDestroy {
   
-  people: People[] = [];
+  people: People;
   peopleSubscription: Subscription;
   
   constructor(private peopleService: PeopleService) {
@@ -19,18 +19,13 @@ export class PeopleComponent implements OnInit, OnDestroy {
   
   ngOnInit(): void {
     this.peopleSubscription = this.peopleService.subscribe(this.onPeopleStateUpdated);
-    this.peopleService.fetchPeople();
   }
   
-  selectPeople(people: People) {
-    this.peopleService.selectPeople(people);
-  }
-
   ngOnDestroy(): void {
     this.peopleSubscription.unsubscribe();
   }
   
   onPeopleStateUpdated(peopleState: PeopleState): any {
-    this.people = peopleState.list;
+    this.people = peopleState.selected;
   }
 }

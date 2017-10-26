@@ -5,7 +5,8 @@ import { ActionReducer, Action } from '@ngrx/store';
  * People state model
  **/
 export class PeopleState {
-  list: People[];
+	list: People[];
+	selected: People;
 }
 
 
@@ -13,6 +14,7 @@ export class PeopleState {
  * Action types
  **/
 const PEOPLE_FETCHED = '[PEOPLE] FETCHED';
+const PEOPLE_SELECTED = '[PEOPLE] SELECTED';
 
 
 /*
@@ -24,6 +26,10 @@ export class PeopleFetchAction implements Action {
   constructor(public payload: People[]) {}  
 }
 
+export class PeopleSelectedAction implements Action {
+	readonly type = PEOPLE_SELECTED;
+	constructor(public payload: People) {}  
+  }
 
 /*
  * Reducer
@@ -32,8 +38,11 @@ export function peopleReducer(state: any = { list: [] }, action: Action) {
 
 	switch (action.type) {
 
-    case PEOPLE_FETCHED:
-			return Object.assign({}, state, {list: action.payload});
+		case PEOPLE_FETCHED:
+				return Object.assign({}, state, {list: action.payload});
+				
+		case PEOPLE_SELECTED:
+			return Object.assign({}, state, {selected: action.payload});
 
 		default:
 			return state;

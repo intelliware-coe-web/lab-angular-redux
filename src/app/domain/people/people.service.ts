@@ -1,3 +1,4 @@
+import { People } from './people.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
@@ -6,7 +7,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Store } from '@ngrx/store';
 
 import { AppState } from './../../app.model';
-import { PeopleFetchAction, PeopleState } from './people.reducer';
+import { PeopleFetchAction, PeopleState, PeopleSelectedAction } from './people.reducer';
 
 @Injectable()
 export class PeopleService {
@@ -22,6 +23,10 @@ export class PeopleService {
     return this.http
               .get(this.baseUrl)
               .subscribe((p: any) => this.store.dispatch(new PeopleFetchAction(p.results)));
+  }
+
+  selectPeople(people: People) {
+    this.store.dispatch(new PeopleSelectedAction(people));
   }
 
   subscribe(next: (value: PeopleState) => void) : Subscription {

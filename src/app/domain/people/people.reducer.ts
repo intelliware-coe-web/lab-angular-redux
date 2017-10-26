@@ -14,7 +14,7 @@ export class PeopleState {
  * Action types
  **/
 const PEOPLE_FETCHED = '[PEOPLE] FETCHED';
-const PEOPLE_SELECTED = '[PEOPLE] SELECTED';
+// LAB: Step 1 - Add new action type
 
 
 /*
@@ -26,10 +26,7 @@ export class PeopleFetchAction implements Action {
   constructor(public payload: People[]) {}  
 }
 
-export class PeopleSelectedAction implements Action {
-	readonly type = PEOPLE_SELECTED;
-	constructor(public payload: People) {}  
-  }
+// LAB: Step 2 - Create new action
 
 /*
  * Reducer
@@ -39,10 +36,9 @@ export function peopleReducer(state: any = { list: [] }, action: Action) {
 	switch (action.type) {
 
 		case PEOPLE_FETCHED:
-				return Object.assign({}, state, {list: action.payload});
+			return Object.assign({}, state, {list: action.payload});
 				
-		case PEOPLE_SELECTED:
-			return Object.assign({}, state, {selected: action.payload});
+		// LAB: Step 3 - Generate new immutable state
 
 		default:
 			return state;

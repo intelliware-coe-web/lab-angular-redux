@@ -8,7 +8,7 @@ import { People } from './people.model';
   selector: 'people-list',
   templateUrl: './people-list.component.html'
 })
-export class PeopleComponent implements OnInit, OnDestroy {
+export class PeopleListComponent implements OnInit, OnDestroy {
   
   people: People[] = [];
   peopleSubscription: Subscription;

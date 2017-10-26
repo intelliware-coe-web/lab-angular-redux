@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Store } from '@ngrx/store';
 
 import { AppState } from './../../app.model';
-import { PeopleFetchAction, PeopleState, PeopleSelectedAction } from './people.reducer';
+import { PeopleFetchAction, PeopleState } from './people.reducer';
 
 @Injectable()
 export class PeopleService {
@@ -26,7 +26,8 @@ export class PeopleService {
   }
 
   selectPeople(people: People) {
-    this.store.dispatch(new PeopleSelectedAction(people));
+    console.log('[people-list] list item clicked: ', people);
+    // LAB: Step 4 - Dispatch the action
   }
 
   subscribe(next: (value: PeopleState) => void) : Subscription {

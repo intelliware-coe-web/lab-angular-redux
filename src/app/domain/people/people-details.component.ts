@@ -26,6 +26,6 @@ export class PeopleDetailsComponent implements OnInit, OnDestroy {
   }
   
   onPeopleStateUpdated(peopleState: PeopleState): any {
-    this.people = peopleState.selected;
+    // LAB: Step 5 - Update people field 
   }
 }

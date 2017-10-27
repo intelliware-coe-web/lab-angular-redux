@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    </head>
+<body> 
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js"></script>
+    
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDcxAyL36_3VbVDdngoFW0NyaU1jMQH0Fo",
+            authDomain: "web-ui-coe-labs.firebaseapp.com",
+            databaseURL: "https://web-ui-coe-labs.firebaseio.com",
+            projectId: "web-ui-coe-labs",
+            storageBucket: "web-ui-coe-labs.appspot.com",
+            messagingSenderId: "164697948228"
+        };
+        firebase.initializeApp(config);
+        
+        let now = new Date();
+        let sessionDate = now.getFullYear() + '-' + (now.getMonth()+1)+ '-' + now.getDate();
+
+
+        firebase.database()
+            .ref('/labs/angular-redux/sessions/' + sessionDate)
+            .on('value', (snapshot) => {
+                let value = snapshot.val()
+                let polls = {};
+                Object
+                    .keys(value)
+                    .map(key => value[key].polls)
+                    .forEach(e => {
+                        if(e) {
+                            Object.keys(e)
+                                .map(key => e[key])
+                                .forEach(x => {
+                                    polls[x.question] = polls[x.question] || {}
+                                    polls[x.question][x.answer] = (polls[x.question][x.answer] || 0) + 1;
+                                })
+                        }
+                    })
+
+                    Object.keys(polls).forEach(key => {
+                        let pollName = key;
+                        let labels = Object.keys(polls[key]);
+                        let values = Object.keys(polls[key]).map(k => polls[key][k]);
+                        
+                        addChart(pollName, labels, values);
+                    });
+            });
+    
+            function addChart(pollName, labels, values) {
+
+                $('body').append('<div style="display: inline-block; width: 400px; height: 400px"><canvas id="' + pollName + '" width="200px" height="200px"></canvas></div>')
+
+                var ctx = document.getElementById(pollName).getContext('2d');
+                var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{ 
+                        label: pollName, 
+                        data: values,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255,99,132,1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                }
+            });
+        }
+    </script>
+</body>
+</html>

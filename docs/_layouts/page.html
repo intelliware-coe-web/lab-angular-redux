@@ -74,14 +74,30 @@
             }
         </style>
     </head>
-<body>
+<body hidden>
+
+<firebase-app
+    auth-domain="polymerfire-test.firebaseapp.com"
+    database-url="https://polymerfire-test.firebaseio.com/"
+    api-key="AIzaSyDTP-eiQezleFsV2WddFBAhF_WEzx_8v_g"
+    storage-bucket="polymerfire-test.appspot.com"
+    messaging-sender-id="544817973908">
+</firebase-app>
 
 <google-codelab title="AngularX with Redux Lab" feedback-link="{{site.url}}{{site.baseurl }}" last-updated="2017-10-13">
 
     <google-codelab-step label="Overview" duration="5">
 
-        <p>[ADD INTRO]</p>
-        <p>[ADD SCREENSHOT]</p>
+        <p>Today we'll learn how to use Redux with Angular X. The main goals of our lab are: 
+            <ul>
+                <li>show how to use <strong>ngRx</strong> in Angular</li>
+                <li>get familiar with the <strong>Redux</strong> terminology</li>
+                <li>explore the <strong>Redux DevTools</strong></li>
+                <li>and have some fun...</li>
+            </ul>
+        </p>
+
+        <h2>Polls</h2>
         
         <h3>Angular X</h3>
 
@@ -111,7 +127,48 @@
     </google-codelab-step>
 
     <google-codelab-step label="Concepts &amp; Terminology" duration="5">
-        <p>[ADD DESCRIPTION]</p>
+        
+        <h2>Core Concepts</h2>
+        <ul>
+            <li>
+                <h3>Actions</h3>
+                <p>Actions are payloads of information that send data from your application to your store. They are the only source of information for the store. You send them to the store using <code>store.dispatch()</code></p>
+            </li>
+            <li>
+                <h3>Reducers</h3>
+                <p>Actions describe the fact that something happened, but don't specify how the application's state changes in response. This is the job of reducers.</p>
+            </li>
+            <li>
+                <h3>Store</h3>
+                <p>The Store is the object that brings them together. The store has the following responsibilities:</p>
+                <ul>
+                    <li>Holds application state</li>
+                    <li>Allows access to state via <code>getState()</code></li>
+                    <li>Allows state to be updated via <code>dispatch(action)</code></li>
+                    <li>Registers listeners via  <code>subscribe(listener)</code></li>
+                    <li>Handles unregistering of listeners via the function returned by  <code>subscribe(listener)</code></li>
+                </ul>
+            </li>
+            <li>
+                <h3>Data Flow</h3>
+                <p>Redux architecture revolves around a strict unidirectional data flow.</p>
+            </li>
+        </ul>
+        <h2>Three Principles</h2>
+        <ul>
+            <li>
+                <h3>Single source of truth</h3>
+                <p>The state of your whole application is stored in an object tree within a single store.</p>
+            </li>
+            <li>
+                <h3>State is read-only</h3>
+                <p>The only way to change the state is to emit an action, an object describing what happened.</p>
+            </li>
+            <li>
+                <h3>Changes are made with pure functions</h3>
+                <p>To specify how the state tree is transformed by actions, you write pure reducers.</p>
+            </li>
+        </ul>
     </google-codelab-step>
 
 
@@ -169,10 +226,45 @@
             <li><a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd">For Chrome</a></li>
             <li><a href="https://addons.mozilla.org/en-US/firefox/addon/remotedev/">For Firefox</a></li>
         </ul>
+
+        <h2>Excepted result:</h2>
+        <p>
+            <img src="{{ site.baseurl}}/assets/images/dev-tools.png" />
+        </p>
+
     </google-codelab-step>
 
 
-    <google-codelab-step label="Additional Resources" duration="1">
+
+    <google-codelab-step label="Wrapping up" duration="1">
+        
+        <h3>Redux</h3>
+
+        <google-codelab-survey survey-id="feedback-redux">
+            <h4>How do you feel about Redux?</h4>
+            <paper-radio-group>
+                <paper-radio-button>I'm confused...</paper-radio-button>
+                <paper-radio-button>Nothing new for me</paper-radio-button>
+                <paper-radio-button>I don't see the value</paper-radio-button>
+                <paper-radio-button>I'd like to learn more about it</paper-radio-button>
+                <paper-radio-button>I want to use it on my project</paper-radio-button>
+            </paper-radio-group>
+        </google-codelab-survey>
+
+        <h3>About the lab</h3>
+        <google-codelab-survey survey-id="feedback-lab">
+            <h4>How would rate your experience?</h4>
+            <paper-radio-group>
+                <paper-radio-button>Not enough coding</paper-radio-button>
+                <paper-radio-button>Too easy</paper-radio-button>
+                <paper-radio-button>Too difficult</paper-radio-button>
+                <paper-radio-button>I wish I had more context</paper-radio-button>
+                <paper-radio-button>I liked it</paper-radio-button>
+                <paper-radio-button>It was great, let's have more!</paper-radio-button>
+            </paper-radio-group>
+        </google-codelab-survey>
+
+        <h2>Additional Resources</h2>
         <ul>
             <li><a href="http://redux.js.org/docs/introduction" target="_blank">Redux</a></li>
             <li><a href="https://github.com/ngrx/store" target="_blank">ngRx</a></li>
@@ -181,6 +273,47 @@
 
 
 </google-codelab>
+
+<script src="//cdn.jsdelivr.net/npm/fingerprintjs2@1.5.0/dist/fingerprint2.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDcxAyL36_3VbVDdngoFW0NyaU1jMQH0Fo",
+    authDomain: "web-ui-coe-labs.firebaseapp.com",
+    databaseURL: "https://web-ui-coe-labs.firebaseio.com",
+    projectId: "web-ui-coe-labs",
+    storageBucket: "web-ui-coe-labs.appspot.com",
+    messagingSenderId: "164697948228"
+  };
+  firebase.initializeApp(config);
+
+  let now = new Date();
+  let deviceFingerprint = '';
+  let sessionDate = now.getFullYear() + '-' + (now.getMonth()+1)+ '-' + now.getDate();
+  let defaultDatabase = firebase.database();
+
+  new Fingerprint2().get(fingerprint => {
+      deviceFingerprint = fingerprint;
+      document.querySelector('body').removeAttribute('hidden'); // show body
+      createOrUpdateUserSession(sessionDate);
+  });
+
+ function userSessionPath() {
+      return '/labs/angular-redux/sessions/' + sessionDate + '/' + deviceFingerprint;
+  } 
+
+  let createOrUpdateUserSession = (sessionDate) => {
+    defaultDatabase.ref(userSessionPath()).set({lastStarted: new Date().toISOString()});
+  }
+
+  document.addEventListener('google-codelab-survey-answer', (event) => {
+    defaultDatabase.ref(userSessionPath() + '/polls').update({ [event.srcElement.surveyId]: event.detail });  
+  });
+
+
+</script>
 
 </body>
 </html>

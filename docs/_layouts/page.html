@@ -6,7 +6,6 @@
 
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
         <script src="//cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.17/webcomponents-lite.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.3/es6-sham.min.js"></script>
 
         <style is="custom-style">
             :root {
@@ -291,12 +290,12 @@
   };
   firebase.initializeApp(config);
 
-  let now = new Date();
-  let deviceFingerprint = '';
-  let sessionDate = now.getFullYear() + '-' + (now.getMonth()+1)+ '-' + now.getDate();
-  let defaultDatabase = firebase.database();
+  var now = new Date();
+  var deviceFingerprint = '';
+  var sessionDate = now.getFullYear() + '-' + (now.getMonth()+1)+ '-' + now.getDate();
+  var defaultDatabase = firebase.database();
 
-  new Fingerprint2().get(fingerprint => {
+  new Fingerprint2().get(function(fingerprint) {
       deviceFingerprint = fingerprint;
       document.querySelector('body').removeAttribute('hidden'); // show body
       createOrUpdateUserSession(sessionDate);
@@ -306,11 +305,11 @@
       return '/labs/angular-redux/sessions/' + sessionDate + '/' + deviceFingerprint;
   } 
 
-  let createOrUpdateUserSession = (sessionDate) => {
+  var createOrUpdateUserSession = function(sessionDate) {
     defaultDatabase.ref(userSessionPath()).set({lastStarted: new Date().toISOString()});
   }
 
-  document.addEventListener('google-codelab-survey-answer', (event) => {
+  document.addEventListener('google-codelab-survey-answer', function(event){
     defaultDatabase.ref(userSessionPath() + '/polls').update({ [event.srcElement.surveyId]: event.detail });  
   });
 

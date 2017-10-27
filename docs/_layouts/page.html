@@ -41,6 +41,8 @@
                 background: white !important;
                 border-right: 1px solid var(--iwd-blue);
             }
+
+            google-codelab-step h2 { margin-top: 60px !important; margin-bottom: 40px !important; }
             
             /* Current step - nav item */
             /deep/ .google-codelab.iron-selected.toc-item {
@@ -124,7 +126,9 @@
         </ul>
 
         <h2>Excepted result:</h2>
-        <p>[ADD SCREENSHOT]</p>
+        <p>
+            <img src="{{ site.baseurl}}/assets/images/feat-people-list.png" />
+        </p>
     </google-codelab-step>
 
     
@@ -142,7 +146,14 @@
         </ul>
 
         <h2>Excepted result:</h2>
-        <p>[ADD SCREENSHOT]</p>
+        <p>
+            <img src="{{ site.baseurl}}/assets/images/feat-people-details.png" />
+        </p>
+
+        <strong>Note: </strong>If you're struggling, you can still checkout the <strong>tags/feat-people-details-solution</strong> tag.
+
+        <p><code>git checkout tags/feat-people-details-solution</code></p>
+
     </google-codelab-step>
 
     <google-codelab-step label="Create a new store" duration="25">
@@ -163,8 +174,8 @@
 
     <google-codelab-step label="Additional Resources" duration="1">
         <ul>
-            <li><a href="http://redux.js.org/">Redux</a></li>
-            <li><a href="https://github.com/ngrx/store">ngRx</a></li>
+            <li><a href="http://redux.js.org/docs/introduction" target="_blank">Redux</a></li>
+            <li><a href="https://github.com/ngrx/store" target="_blank">ngRx</a></li>
         </ul>        
     </google-codelab-step>
 
